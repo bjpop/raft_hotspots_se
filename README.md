@@ -84,6 +84,4 @@ Raft_hotspots_se returns the following exit status values:
 
 # Bugs
 
-XXX fixme
-
-File at our [Issue Tracker](https://github.com/raft_hotspots_se/raft_hotspots_se/issues)
+File at our [Issue Tracker](https://github.com/bjpop/raft_hotspots_se/issues)
