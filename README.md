@@ -7,7 +7,7 @@ A major advance in this direction comes from the work of Tchurikov et al, report
 This suite of programs facilitates the analysis of the FASTQ outputs of the RAFT protocol, and allows the detection of double stranded breakpoint hotspots at a single nucleotide resolution.
 
 This suite of tools was used in the work described by the paper
-"Fine resolution mapping of double-strand break sites for human ribosomal DNA units" [Genomics Data](http://www.sciencedirect.com/science/article/pii/S221359601630109X).
+"Fine resolution mapping of double-strand break sites for human ribosomal DNA units" [Genomics Data 10 (2016) 19–21](http://www.sciencedirect.com/science/article/pii/S221359601630109X).
 
 # Licence
 
