@@ -3,27 +3,27 @@
 from distutils.core import setup
 
 LONG_DESCRIPTION = \
-'''The program reads one or more input FASTA files. 
-For each file it computes a variety of statistics, and then
-prints a summary of the statistics as output.
-        
-The goal is to provide a solid foundation for new bioinformatics command line tools,
-and is an ideal starting place for new projects.'''
+'''
+Software tools for analysis data from the RAFT (rapid amplification of forum termini) protocol
+to compute sites of DNA double stranded breakpoint hotspots"
+'''
 
 
 setup(
-    name='raft_hotspots_se-py',
+    name='raft_hotspots_se',
     version='0.1.0.0',
-    author='Bernie Pope',
-    author_email='bjpope@unimelb.edu.au',
+    author='Daniel Park',
+    author_email='djp@unimelb.edu.au',
     packages=['raft_hotspots_se'],
     package_dir={'raft_hotspots_se': 'raft_hotspots_se'},
     entry_points={
-        'console_scripts': ['raft_hotspots_se-py = raft_hotspots_se.raft_hotspots_se:main']
+        'console_scripts': [
+            'raft_bed_parse = raft_hotspots_se.raft_bed_parse:main',
+            'raft_fastq_parse = raft_hotspots_se.raft_fastq_parse:main']
     },
     url='https://github.com/bjpop/raft_hotspots_se',
     license='LICENSE',
-    description=('A prototypical bioinformatics command line tool'),
+    description=('Compute DNA double stranded breakpoint hotspots from RAFT sequencing data'),
     long_description=(LONG_DESCRIPTION),
     install_requires=["biopython==1.66"],
 )
