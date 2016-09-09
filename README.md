@@ -11,7 +11,7 @@ This suite of tools was used in the work described by the paper
 
 # Licence
 
-This program is released as open source software under the terms of [MIT License](https://raw.githubusercontent.com/raft_hotspots_se-paper/raft_hotspots_se/master/LICENSE)
+This program is released as open source software under the terms of [MIT License](https://raw.githubusercontent.com/bjpop/raft_hotspots_se/master/LICENSE)
 
 # Installing
 
