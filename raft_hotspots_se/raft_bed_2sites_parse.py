@@ -1,6 +1,9 @@
 #!/usr/bin/env python
 
 '''
+raft_bed_2sites_parse.py
+28th Sep 2016
+Modified from the below to require no clipping at start or end
 raft_bed_parse.py
 
 Initiated by DJP 4th August  2016 - modified from raft_rdna_bed_parse.py
@@ -47,13 +50,15 @@ def main():
     dsb_site_dict = {}	# record sites by chr and, nested, co-ordinate (zero-based)
     chrom_set = set()	# record chr species encountered - a representation to be sorted prior to printout
     reader = open(options.bed)
+    clips = ['S', 'H']
     for read in reader:
 	elements = read.strip().split('\t')	# requires tab delimited format
 	chrom, start, end = elements[0], int(elements[1]), int(elements[2])
 	mq, strand, cigar = int(elements[4]), elements[5], elements[6]
 	if (mq > 40) and ((end - start) > 25):	# check MAPQ > 40 and map length > 25
 	    if strand == '+':
-		if get_cigar_l1(cigar) != 'S':	# for + mapping check no clipping at 'start'
+#		if get_cigar_l1(cigar) != 'S':	# for + mapping check no clipping at 'start'
+		if (get_cigar_l1(cigar) not in clips) and (cigar[-1] not in clips):	# check no clipping at 'start' or 'end'
 		    if chrom in chrom_set:
 			if start in dsb_site_dict[chrom]:
 			    dsb_site_dict[chrom][start] += 1
@@ -66,7 +71,8 @@ def main():
 		else:
 		    continue
 	    elif strand == '-':
-		if cigar[-1] != 'S':	# for - mapping check no clipping at 'end'
+		if (get_cigar_l1(cigar) not in clips) and (cigar[-1] not in clips):	# check no clipping at 'start' or 'end'
+#		if cigar[-1] != 'S':	# for - mapping check no clipping at 'end'
 		    end_base_zero = (end - 1)	# convert to base 0
 		    if chrom in chrom_set:
 			if end_base_zero in dsb_site_dict[chrom]:
