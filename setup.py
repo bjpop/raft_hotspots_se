@@ -18,8 +18,8 @@ setup(
     package_dir={'raft_hotspots_se': 'raft_hotspots_se'},
     entry_points={
         'console_scripts': [
-            'raft_bed_parse = raft_hotspots_se.raft_bed_parse:main',
-            'raft_fastq_parse = raft_hotspots_se.raft_fastq_parse:main']
+            'raft_fastq_2sites_parse = raft_hotspots_se.raft_fastq_2sites_parse:main',
+            'raft_bed_2sites_parse = raft_hotspots_se.raft_bed_2sites_parse:main']
     },
     url='https://github.com/bjpop/raft_hotspots_se',
     license='LICENSE',
