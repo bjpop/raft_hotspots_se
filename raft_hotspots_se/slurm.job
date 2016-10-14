@@ -41,4 +41,4 @@ module load samtools-intel/1.3.1
 
 source $HOME/scratch/raft_hotspots_se_dev/bin/activate
 
-./pipeline.sh -v -r $HOME/scratch/raft_hotspots_se_test/U13369.1_hg19.fa -f $HOME/scratch/raft_hotspots_se_test/SRR944107.fastq -p SRRbla_hg19 -b $HOME/scratch/raft_hotspots_se_test/hg19.blacklist.sort.bed -s $HOME/scratch/raft_hotspots_se_test/hg19_GATC5.bed 
+./pipeline.sh -v -r U13369.1_hg19.fa -f SRR944107.fastq -p SRRbla_hg19 -b hg19.blacklist.sort.bed -s hg19_GATC5.bed 
