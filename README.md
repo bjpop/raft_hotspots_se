@@ -56,9 +56,9 @@ Example command line:
 ./pipeline.sh -v -r U13369.1_hg19.fa -f SRR944107.fastq -p SRRbla_hg19 -b hg19.blacklist.sort.bed -s hg19_GATC5.bed
 ```
 
+We also provide an example SLURM script to illustrate running the example on a cluster.
+
 The underlying Python scripts (`raft_fastq_2sites_parse` and `raft_bed_2sites_parse`) support the following command line arguments: 
-
-
 ```
 % raft_fastq_2sites_parse -h
 usage: raft_fastq_2sites_parse [-h] --fastq FASTQ [--dsb_flank DSB_FLANK]
