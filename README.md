@@ -34,17 +34,35 @@ Raft_hotspots_se can be installed using `pip` in a variety of ways (`%` indicate
 
 # General behaviour
 
+We provide two Python programs (`raft_fastq_2sites_parse` and `raft_bed_2sites_parse`) which are intended to be used within a pipeline.
+The pipeline requires bash, bwa (>= 0.7.5), samtools (>= 1.3.1), bedtools (>= 2.17.0), Python (2.7).
 
-# Usage 
-
-In the examples below, `%` indicates the command line prompt.
-
-## Help message
+The pipeline supports the following arguments:
 
 ```
-% raft_fastq_parse -h
-usage: raft_fastq_parse [-h] --fastq FASTQ [--dsb_flank DSB_FLANK]
-                        [--re_flank RE_FLANK]
+    pipeline.sh [-h] [-v] -r reference -f fastq -p prefix -b blacklist -s sites
+```
+  
+* `-h`: (optional), print a help message and exit
+* `-v`: (optional), print more information about progress to standard output
+* `-f`: input FASTQ file
+* `-p`: output filename prefix, to be used in creating new files
+* `-b`: list of blacklisted genome sites to avoid, as a bed file
+* `-s`: sites located within 5 base pairs of a Sau3AI consensus site (GATC), as a bed file
+
+Example command line:
+
+```
+./pipeline.sh -v -r U13369.1_hg19.fa -f SRR944107.fastq -p SRRbla_hg19 -b hg19.blacklist.sort.bed -s hg19_GATC5.bed
+```
+
+The underlying Python scripts (`raft_fastq_2sites_parse` and `raft_bed_2sites_parse`) support the following command line arguments: 
+
+
+```
+% raft_fastq_2sites_parse -h
+usage: raft_fastq_2sites_parse [-h] --fastq FASTQ [--dsb_flank DSB_FLANK]
+                               [--re_flank RE_FLANK]
 
 A tool to present single fragment fastq reads from RAFT trimmed with DSBs at
 5-prime terminus
@@ -60,8 +78,8 @@ optional arguments:
 ```
 
 ```
-% raft_bed_parse -h
-usage: raft_bed_parse [-h] --bed BED
+% raft_bed_2sites_parse -h
+usage: raft_bed_2sites_parse [-h] --bed BED
 
 A tool to parse raft bamtobed output after presenting fastq reads with DSBs at
 start. This yields DSB coordinates and counts.
@@ -69,7 +87,6 @@ start. This yields DSB coordinates and counts.
 optional arguments:
   -h, --help  show this help message and exit
   --bed BED   name of bed file
-
 ```
 
 # Exit status values
@@ -77,9 +94,8 @@ optional arguments:
 Raft_hotspots_se returns the following exit status values:
 
 * *0*: The program completed successfully.
-* *1*: File I/O error. This can occur if at least one of the input FASTA files cannot be opened for reading. This can occur because the file does not exist at the specified path, or raft_hotspots_se does not have permission to read from the file. 
-* *2*: A command line error occurred. This can happen if the user specifies an incorrect command line argument. In this circumstance raft_hotspots_se will also print a usage message to the standard error device (stderr).
-* *3*: Input FASTA file is invalid. This can occur if raft_hotspots_se can read an input file but the file format is invalid. 
+* *1*: The program terminated with an error.
+* *2*: There was an error with the command line arguments.
 
 
 # Bugs
